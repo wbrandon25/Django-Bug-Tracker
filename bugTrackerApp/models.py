@@ -16,7 +16,7 @@ class extendedUser(models.Model):
     bDev = models.BooleanField(default=False)
 
     def __str__(self):
-        return return self.ogUser.username
+        return self.ogUser.username
 
 
 class Project(models.Model):
