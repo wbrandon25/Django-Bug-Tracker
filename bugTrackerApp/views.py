@@ -152,7 +152,7 @@ def UpdateTicketAdmin(request, pk):
         else:
             print('Something went wrong')
     context = {'form': form}
-    return render(request, 'bugTrackerApp/CreateUpdateTicket.html', context)
+    return render(request, 'bugTrackerApp/createUpdateTicket.html', context)
 
 
 @login_required(login_url='login')
