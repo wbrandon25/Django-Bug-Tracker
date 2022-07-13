@@ -22,8 +22,6 @@
   </div>
   {% endfor %}
 
-
-
   <h1 class="font-monospace">{{ticket.title}}</h1>
   <h3 class="font-monospace">{{ticket.description}}</h3>
   <p class="font-monospace"> Author: <a href="{% url 'profile-page' ticket.author.id %}"> {{ticket.author}} </a> </p>
@@ -38,7 +36,6 @@
     {% endfor %}</p>
   <p class="font-monospace"> Resovled: {{ticket.resolved}}</p>
 
-
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li> &nbsp;
@@ -46,7 +43,6 @@
       <li class="breadcrumb-item active">Ticket</li> &nbsp;
     </ol>
   </nav>
-
 
   {% if request.user == ticket.author or request.user.extendeduser.bDev == True%}
 

@@ -28,33 +28,21 @@
   </nav>
 
   <br>
-
   Created by {{projectObj.author}} on {{projectObj.created}}
-
-
   <a style="float:right" class="btn btn-primary" href="{% url 'createTicketForProject' projectObj.id %}"
     role="button">Create Ticket for this project </a>
   {% if request.user == projectObj.author or request.user.extendeduser.bDev == True %}
-
-
   <a class="btn btn-primary" href="{% url 'update-project' projectObj.id %}" role="button">Edit project </a>
   <a class="btn btn-primary" href="{% url 'delete-project' projectObj.id %}" role="button">Delete project </a>
   {% endif %}
 </div>
-
-
 <br><br>
-
 <form class="searchCombo" role="search" method="GET" action="">
   <button class="btn btn-outline-success projectButton" type="submit" placeholder="Query"> Reset </button>
   <input class="projectSearchBar" type="text" name="q" placeholder="Search" aria-label="Search">
-
 </form>
 
-
-
 <h3>Active Tickets</h3>
-
 <table class="table table-striped table-hover">
   <thead>
     <tr>
@@ -64,7 +52,6 @@
       <th scope="col">Description</th>
       <th scope="col">Ticket Id </th>
       <th scope="col">Tags </th>
-
       <th scope="col">View </th>
     </tr>
   </thead>
@@ -83,11 +70,9 @@
         {% endfor %}
       </td>
       <td><a href="{% url 'ticket' ticket.id %}"> View </a> <br></td>
-
     </tr>
     {% endif %}
     {% endfor %}
-
   </tbody>
 </table>
 
@@ -106,7 +91,6 @@
   </thead>
   <tbody>
     {% for ticket in resolvedTickets %}
-
     <tr>
       <th scope="row">{{ forloop.counter }}</th>
       <td>{{ticket.author}}</td>
@@ -119,14 +103,9 @@
         {% endfor %}
       </td>
       <td><a href="{% url 'ticket' ticket.id %}"> View </a> <br></td>
-
     </tr>
-
     {% endfor %}
-
   </tbody>
 </table>
-
-
 
 {% endblock %}

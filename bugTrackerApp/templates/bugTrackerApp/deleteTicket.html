@@ -2,10 +2,6 @@
 
 {% block content %}
 
-
-
-
-
 <div class="crispForm">
     <p>Are you sure you want to delete {{ticket.title}}?</p> <br>
 
@@ -21,11 +17,7 @@
     </form>
 </div>
 
-
-
-
 {% endblock %}
-
 
 <form action="{{request.META.HTTP_REFERER}}" style="display: inline;">
     {% csrf_token %}
