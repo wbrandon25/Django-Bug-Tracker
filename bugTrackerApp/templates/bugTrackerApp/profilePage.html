@@ -1,0 +1,105 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+<style>
+  .info-container {
+    margin-left: 10px;
+  }
+</style>
+
+<div class='info-container'>
+
+  <h6>User: {{userObj.username}}</h6>
+  <h6>Full Name: {{userObj.extendeduser.fullName}}</h6>
+  <h6>Bio: {{userObj.extendeduser.bio}}</h6>
+  <h6>Developer: {{userObj.extendeduser.bDev}}</h6>
+
+
+
+  {% if request.user == userObj or request.user.extendeduser.bDev == True %}
+  <a class="btn btn-primary" href="{% url 'update-profile' userObj.id %}" role="button">Edit Profile</a>
+  {% endif %}
+
+
+
+</div>
+
+<hr>
+
+
+<div class="row">
+
+  <div class="profileColumn">
+    <h3>Tickets Made </h3>
+    <table class="table joemamatest">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">title</th>
+          <th scope="col">description</th>
+          <th scope="col">author</th>
+          <th scope="col">project.title</th>
+          <th scope="col">ticket.resolved</th>
+          <th scope="col">Created</th>
+          <th scope="col">View</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for ticket in tickets %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>{{ticket.title}}</td>
+          <td>{{ticket.description}}</td>
+          <td>{{ticket.author}}</td>
+          <td>{{ticket.project.title}}</td>
+          <td>{{ticket.resolved}}</td>
+          <td>{{ticket.created}}</td>
+          <td><a href="{% url 'ticket' ticket.id %}"> View </a></td>
+
+
+
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="profileColumn">
+    <h3>Comments Posted </h3>
+    <table class="table joemamatest">
+
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Comment</th>
+          <th scope="col">Project Name</th>
+          <th scope="col">Ticket Title</th>
+          <th scope="col">Created</th>
+          <th scope="col">View</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for comment in userComments %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>{{comment.body}}</td>
+          <td>{{comment.parent_ticket.project}}</td>
+          <td>{{comment.parent_ticket.title}}</td>
+          <td>{{comment.created}}</td>
+          <td><a href="{% url 'ticket' comment.parent_ticket.id %}"> View </a></td>
+
+
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+{% endblock %}

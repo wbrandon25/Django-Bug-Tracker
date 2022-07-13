@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<h1>This is the log out page </h1> 
+<form method = 'POST' action ="">
+    {%csrf_token%}
+    <label> Username: </label>
+    <input type = 'text' name = 'username' placeholder="Enter Username here">
+
+    <label> Password: </label>
+    <input type = 'password' name = 'password' placeholder="Enter password here">
+
+    <input type="submit" value = "Login" /> 
+    <p> Haven't signed up yet?</p>
+    
+</form>
+{% endblock %}

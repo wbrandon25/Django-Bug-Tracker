@@ -1,0 +1,95 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+
+
+
+<div class="row">
+  <div class="profileColumn">
+    <h3> Unassigned Tickets </h3>
+    <table class="table joemamatest">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Ticket Title</th>
+          <th scope="col">Description</th>
+          <th scope="col">Author</th>
+          <th scope="col">Project Title</th>
+          <th scope="col">Resolved</th>
+          <th scope="col">Tags </th>
+
+          <th scope="col">Created</th>
+          <th scope="col">View</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for ticket in noDeveloper %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>{{ticket.title}}</td>
+          <td>{{ticket.description}}</td>
+          <td>{{ticket.author}}</td>
+          <td>{{ticket.project.title}}</td>
+          <td>{{ticket.resolved}}</td>
+          <td>
+            {% for tag in ticket.tag.all %}
+            {{tag}}
+            {% endfor %}
+          </td>
+          <td>{{ticket.created}}</td>
+          <td><a href="{% url 'ticket' ticket.id %}"> View</a> </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="profileColumn">
+    <h3>Assigned Tickets </h3>
+    <table class="table joemamatest">
+
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Ticket Title</th>
+          <th scope="col">Description</th>
+          <th scope="col">Author</th>
+          <th scope="col">Project Title</th>
+          <th scope="col">Resolved</th>
+          <th scope="col">Tags </th>
+
+          <th scope="col">Created</th>
+          <th scope="col">View</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for ticket in hasDeveloper %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>{{ticket.title}}</td>
+          <td>{{ticket.description}}</td>
+          <td>{{ticket.author}}</td>
+
+          <td>{{ticket.project.title}}</td>
+          <td>{{ticket.resolved}}</td>
+          <td>
+            {% for tag in ticket.tag.all %}
+            {{tag}}
+            {% endfor %}
+          </td>
+          <th scope="col">Tags </th>
+          <td>{{ticket.created}}</td>
+          <td><a href="{% url 'ticket' ticket.id %}"> View</a> </td>
+
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+{% endblock %}

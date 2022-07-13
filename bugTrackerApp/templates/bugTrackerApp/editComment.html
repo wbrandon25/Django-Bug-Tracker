@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="crispForm">
+    <form method='POST' action="" name="Post Comment">
+        {% csrf_token %}
+        <input type="text" name="newComment" value="{{oldComment}}" class="textinput textInput form-control"></button>
+        <button class="btn btn-primary" type="submit" style="margin-top: 3px;">Update</button>
+    </form>
+</div>
+
+
+{% endblock %}

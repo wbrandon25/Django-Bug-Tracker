@@ -1,0 +1,111 @@
+DONE: 
+
+comments and tickets they have made 
+which projects they have participated in/ are currently working on 
+
+total comments made 
+
+page that shows staff and user directories/listings
+
+crud comments
+
+crud projects 
+
+need update on comments 
+
+user profiles?
+
+marked some issues as resolved 
+
+some parts of forms are already filled out, such as author of a ticket 
+
+create a ticket for the project you are on specificallly 
+
+create search bar that lets you search by title, description, or tag 
+
+restrict all pages 
+
+modify the extender user model in profile page 
+
+etended user automaticallly created when user signs up 
+
+Create custom user model 
+
+
+people (devs) can have roles so only developres can be assigned to a project - may have to make my own custom form
+
+restrict who can be chosen to be a developer on project 
+
+put the main page into separate segments and put the developers/users on the right 
+
+add another form to the ticket creation process that includes all fields, only for admins 
+
+edit/ delete only if you are the owner 
+
+Create project default select logged in account as user
+
+add date to when comments were made
+
+also use css to make the tables not so long 
+
+add default profile picture
+
+add a my profile button on navbar
+
+in profile, have user info be on the right of image - didnt' do bc does not look nice
+
+fix up profile page
+
+latest bread crumb is not clickable, or not hyperlinked
+
+edit comments shows instance of previous comment
+
+use css to make the search bar not so long and option button to the very right of the screen 
+
+add who made a project, the date, and more info because it be lookiing empty 
+
+flash message when project is updated, created, or deleted 
+
+removing pfp without adding a new one breaks site 
+
+display profile pictures in chat and other places.
+
+User a table for chat because there is less white space between top and bottom of a message? - skipped bc it makes very little difference
+
+fix the numbers not wokring properly in the project/ticket page by making one of them a component so it resets the loop counter? or just use an ul tag? - fixed it by sorting the list before I passed it into the html  
+
+developers can see which tickets have no dev assgined to them - did not implement because the thing below kind of includes it 
+
+^continuing, have a global page that sorts unresolved from resolved and separates assigned and unassigned from the unresolved page 
+
+compact the forms so it is towards the middle of the screen - https://imgur.com/a/zfesCOh - tried using helper with crispy forms but I think it just doesn't work with crispy forms5
+
+limit who can look at options for comments 
+---------------------------------------------------------------------------------->
+
+
+
+
+migrate to sql 
+
+use boot strap + add images 
+
+deploy online - according to video, some changes need to be made 
+
+
+
+ <--------------------------------Bit extra----------------------> 
+
+floating block look for forms - not sure how to do this 
+
+ <--------------------------------Too hard for this version----------------------> 
+
+add some kind of graph like the showcase 
+
+
+ <--------------------------------Remember This Stuff ----------------------> 
+Remember when getting the relationship of some model, it EVEERYTHING NEEDS TO BE LOWERCASE, except for first word(maybe) - idk if this is true because some cases it doesn't have to be??? idk man
+
+EXCEPTION IS WHEN USING A MODEL'S BOOLEAN, WHICH HAS TO BE CASE SENSITIVE, OR WHEN YOU USE HTML, IT HAS TO BE CASE SENSITIVE
+
+classes are lowercase but attributes of classes are upper? idk 

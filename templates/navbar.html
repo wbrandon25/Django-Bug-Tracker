@@ -1,0 +1,62 @@
+{% load static %}
+
+
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a href="{% url 'home' %}"> <img src="{% static 'images/logo.png'%}" width="220" height="60" /> </a>&nbsp;&nbsp;
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'create-ticket' %}">Create Ticket</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'ticket-overview' %}">Ticket Overview</a>
+        </li>
+
+      </ul>
+
+      <ul class="navbar-nav ">
+        <li class="nav-item">
+          {% if request.user.is_authenticated %}
+          User: {{request.user}} &nbsp;
+          {% endif %}
+        </li>
+      </ul>
+
+      {% if request.user.is_authenticated %}
+      <ul class="navbar-nav ">
+        <li class="nav-item">
+          <a class="btn btn-primary" href="{% url 'profile-page' user.id %}" role="button" style="margin-right: 5px;">My
+            Profile</a>
+        </li>
+      </ul>
+      {% endif %}
+
+
+      {% if request.user.is_authenticated %}
+      <form action="{% url 'logout' %}">
+        <button type="submit" class="btn btn-outline-danger">Logout</button>
+      </form>
+      &nbsp;
+      {% else %}
+
+      <form action="{% url 'register' %}">
+        <button type="submit" class="btn btn-outline-success"> Register </button>
+      </form>
+      &nbsp;
+      <form action="{% url 'login' %}">
+        <button type="submit" class="btn btn-outline-primary"> Login </button>
+      </form>
+      {% endif %}
+
+    </div>
+  </div>
+</nav>

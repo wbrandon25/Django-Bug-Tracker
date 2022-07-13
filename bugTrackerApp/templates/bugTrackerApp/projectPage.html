@@ -1,0 +1,132 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+<style>
+  .info-container {
+    margin-left: 5px;
+  }
+</style>
+
+<div class="info-container">
+  {% for msg in messages %}
+  <div class="alert alert-success alert-dismissible fade show" role="alert"
+    style="width: 50%; margin: auto; text-align: center;">
+    {{msg}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor %}
+
+  <h1> {{projectObj.title}} </h1>
+  <h3> {{projectObj.description}} </h3>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li> &nbsp;
+      <li class="breadcrumb-item active">Project</li> &nbsp;
+    </ol>
+  </nav>
+
+  <br>
+
+  Created by {{projectObj.author}} on {{projectObj.created}}
+
+
+  <a style="float:right" class="btn btn-primary" href="{% url 'createTicketForProject' projectObj.id %}"
+    role="button">Create Ticket for this project </a>
+  {% if request.user == projectObj.author or request.user.extendeduser.bDev == True %}
+
+
+  <a class="btn btn-primary" href="{% url 'update-project' projectObj.id %}" role="button">Edit project </a>
+  <a class="btn btn-primary" href="{% url 'delete-project' projectObj.id %}" role="button">Delete project </a>
+  {% endif %}
+</div>
+
+
+<br><br>
+
+<form class="searchCombo" role="search" method="GET" action="">
+  <button class="btn btn-outline-success projectButton" type="submit" placeholder="Query"> Reset </button>
+  <input class="projectSearchBar" type="text" name="q" placeholder="Search" aria-label="Search">
+
+</form>
+
+
+
+<h3>Active Tickets</h3>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Author</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Ticket Id </th>
+      <th scope="col">Tags </th>
+
+      <th scope="col">View </th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for ticket in tickets %}
+    {% if ticket.resolved == False %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ticket.author}}</td>
+      <td>{{ticket.title}}</td>
+      <td>{{ticket.description}}</td>
+      <td>{{ticket.id}}</td>
+      <td>
+        {% for tag in ticket.tag.all %}
+        {{tag}}
+        {% endfor %}
+      </td>
+      <td><a href="{% url 'ticket' ticket.id %}"> View </a> <br></td>
+
+    </tr>
+    {% endif %}
+    {% endfor %}
+
+  </tbody>
+</table>
+
+<h3>Resolved Tickets</h3>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Author</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Ticket Id </th>
+      <th scope="col">View </th>
+      <th scope="col">Tags </th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for ticket in resolvedTickets %}
+
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ticket.author}}</td>
+      <td>{{ticket.title}}</td>
+      <td>{{ticket.description}}</td>
+      <td>{{ticket.id}}</td>
+      <td>
+        {% for tag in ticket.tag.all %}
+        {{tag}}
+        {% endfor %}
+      </td>
+      <td><a href="{% url 'ticket' ticket.id %}"> View </a> <br></td>
+
+    </tr>
+
+    {% endfor %}
+
+  </tbody>
+</table>
+
+
+
+{% endblock %}

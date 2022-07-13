@@ -1,0 +1,43 @@
+{% extends 'main.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+CRUD Project Page
+
+{% if page == 'create' %}
+
+
+{% crispy form %}
+
+</div>
+
+{% elif page == 'update' %}
+
+
+{% crispy form %}
+
+{% elif page == 'delete' %}
+
+<div class="crispForm">
+    <h3 class="text-danger">Are you sure you want to delete this project?</h3>
+    <form action="{{request.META.HTTP_REFERER}}" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Go Back</button>
+    </form>
+
+    <form method="POST" action="" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger projectDeleteButton">Delete</button>
+    </form>
+
+</div>
+
+
+
+
+
+
+{% endif %}
+
+
+{% endblock %}

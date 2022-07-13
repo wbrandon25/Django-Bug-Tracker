@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+
+
+
+
+<div class="crispForm">
+    <p>Are you sure you want to delete {{ticket.title}}?</p> <br>
+
+    <form action="{{request.META.HTTP_REFERER}}" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Go Back</button>
+    </form>
+
+    <form method="POST" action="" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger projectDeleteButton">Delete</button>
+    </form>
+    </form>
+</div>
+
+
+
+
+{% endblock %}
+
+
+<form action="{{request.META.HTTP_REFERER}}" style="display: inline;">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary">Go Back</button>
+</form>
+
+<form method="POST" action="" style="display: inline;">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger projectDeleteButton">Delete</button>
+</form>

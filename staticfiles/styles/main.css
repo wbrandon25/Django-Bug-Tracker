@@ -1,0 +1,129 @@
+/* body{
+    background-color: blue;
+} */
+
+h1{
+    color: red;
+}
+
+h3{
+    color: green;
+}
+
+.projectSearchBar {
+     float: right;
+     height: 37px;
+     width: 400px;
+    margin-right: 3px;
+
+}
+
+.projectButton{
+    float: right;
+    /* margin: 3px; */
+    margin-right: 3px;
+}
+
+.ticketSearch{
+    width: 400px
+}
+
+.ticketDropDown{
+    float:right;
+}
+
+/* .table-striped {
+    width: 80%;
+    margin-left: auto;
+    margin-right: 500px;
+    padding: 0;
+    float:left;
+} */
+
+/* .textinput.textInput.form-control{
+    width: 25%;
+ 
+    
+} */
+
+/* .selectmultiple.form-select{
+  width: 25%;
+  
+} */
+/* border: 3px solid green; */
+  /* padding: 10px; */
+
+
+/* .select.form-select{
+    width:25%
+} */
+
+.projectDeleteButton{
+    /* width: 99%; */
+    margin-left: 4px;
+    /* float:right */
+}
+
+
+.profile-pic{
+    object-fit: cover; 
+    height: 125px; 
+    width: 125px;
+    border: 3px solid rgb(0, 0, 0);
+}
+/* This is to shrink the search box and other things in crips form 
+but I have the helper and other css to take care of it */
+
+/* .crop {
+    width: 200px;
+    height: 150px;
+    overflow: hidden;
+    border: 3px solid rgb(0, 0, 0);
+    margin-left: 2px;
+} */
+
+/* note sure what this does - is it only for img tags inside crop classes?  */
+/* .crop img {
+    width: 400px;
+    height: 300px;
+    margin: -75px 0 0 -100px;
+} */
+
+
+/* Puts two tables text to each other */
+.profileColumn {
+    float: left;
+    width: 50%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+
+.list-group{
+    width: 49%;
+    float: left;
+    margin-left: 5px;
+    margin-bottom: 50px;
+}
+
+/* Does not applyl because the pictures are affected by another style in some tags */
+.commentPics{
+    height: 52px;
+    width: auto;
+}
+
+
+
+.crispForm{
+    margin: auto;
+    width: 50%;
+    border: 3px solid black;
+    padding: 10px;
+    /* background-color:rgb(225, 231, 240); */
+    background:rgb(247, 247, 245);
+}

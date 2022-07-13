@@ -1,0 +1,114 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<style>
+  .info-container {
+    margin-left: 15px;
+
+  }
+
+  .linkNoBlue {
+    text-decoration: none;
+    color: black;
+  }
+</style>
+
+<div class="info-container">
+  {% for msg in messages %}
+  <div class="alert alert-success alert-dismissible fade show" role="alert"
+    style="width: 50%; margin: auto; text-align: center;">
+    {{msg}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor %}
+
+
+
+  <h1 class="font-monospace">{{ticket.title}}</h1>
+  <h3 class="font-monospace">{{ticket.description}}</h3>
+  <p class="font-monospace"> Author: <a href="{% url 'profile-page' ticket.author.id %}"> {{ticket.author}} </a> </p>
+  <p class="font-monospace">Developers:
+    {% for dev in ticket.developers.all %}
+    {{dev}}
+    {% endfor %}</p>
+  <p class="font-monospace"> Parent Project: {{ticket.project}}</p>
+  <p class="font-monospace">Tags:
+    {% for tag in ticket.tag.all %}
+    {{tag}}
+    {% endfor %}</p>
+  <p class="font-monospace"> Resovled: {{ticket.resolved}}</p>
+
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li> &nbsp;
+      <li class="breadcrumb-item"><a href="{% url 'project' ticket.project.id %}"> Project </a></li> &nbsp;
+      <li class="breadcrumb-item active">Ticket</li> &nbsp;
+    </ol>
+  </nav>
+
+
+  {% if request.user == ticket.author or request.user.extendeduser.bDev == True%}
+
+  <a class="btn btn-primary" href="{% url 'update-ticket' ticket.id %}" role="button">Edit Ticket</a>
+  <a class="btn btn-primary" href="{% url 'delete-ticket' ticket.id %}" role="button">Delete Ticket</a>
+  {% endif %}
+  {% if request.user.extendeduser.bDev == True %}
+  <a class="btn btn-primary" href="{% url 'update-ticket-admin' ticket.id %}" role="button">Admin Edit</a>
+  {% endif %}
+
+</div>
+
+<hr>
+
+
+
+<h2 style="margin-left: 15px;"> Comments </h2>
+<div class="container-fluid">
+  <form class="d-flex" method='POST' action="" name="Post Comment">
+    {% csrf_token %}
+    <input class="form-control me-2 ticketSearch" type="text" name="postComment" placeholder="Type here"
+      aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Post</button>
+  </form>
+</div>
+<br>
+
+
+<ul class="list-group">
+  {% for comment in comments %}
+
+  <li class="list-group-item">
+
+
+    {{comment.body}} - <a class="linkNoBlue" href="{% url 'profile-page' comment.user.id %}"> {{comment.user}} </a> |
+    {{comment.created}}
+
+    {% if request.user == comment.user or request.user.extendeduser.bDev == True%}
+    <div class="btn-group dropstart" style="display: inline; float:right;">
+      <button class="btn btn-secondary dropdown-toggle ticketDropDown" type="button" id="dropdownMenuButton1"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        Options
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="{% url 'update-comment' comment.id %}">Edit</a></li>
+        <li>
+          <form method='POST' action="" name='second method'>
+            {% csrf_token %}
+
+            <button type="submit" class="btn btn-outline-danger" name="deleteComment" value={{comment.id}}> Delete
+            </button>
+          </form>
+        </li>
+      </ul>
+    </div>
+    {% endif %}
+
+  </li>
+  {% endfor %}
+</ul>
+
+
+
+
+{% endblock %}

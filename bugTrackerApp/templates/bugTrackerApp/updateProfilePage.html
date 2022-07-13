@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+This is the update profile page for {{profileObj.ogUser}}
+
+
+{% crispy form %}
+
+
+{% endblock %}

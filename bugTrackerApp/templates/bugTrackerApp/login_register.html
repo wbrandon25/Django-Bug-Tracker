@@ -1,0 +1,52 @@
+{% extends 'main.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+{% for msg in messages %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert"
+    style="width: 50%; margin: auto; text-align: center;">
+    {{msg}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+
+{% if page == "login" %}
+
+<div class="crispForm">
+    <div>
+        <h1>Login Page </h1>
+        <form method='POST' action="">
+            {%csrf_token%}
+            <label> Username: </label>
+            <input type="text" name='username' placeholder="Enter Username here"
+                class="textinput textInput form-control">
+
+
+            <label> Password: </label>
+
+            <input type='password' name='password' placeholder="Enter password here"
+                class="textinput textInput form-control">
+            <input type="submit" class="btn btn-primary" value="Login" style="margin-top: 3px;" />
+        </form>
+    </div>
+</div>
+{% else %}
+
+
+
+
+<div class="crispForm">
+    <h1>Register Page </h1>
+
+    <form method='POST' action="" enctype="multipart/form-data">
+        {%csrf_token%}
+        {{ form|crispy }}
+        <input type="submit" value="Register" class="btn btn-primary" />
+    </form>
+</div>
+{% endif %}
+
+
+
+{% endblock %}
