@@ -33,7 +33,7 @@ A project that allows users and developers to track bugs in various projects.
 ## Installation 
 
     # Clone the repository
-    $ git clone https://github.com/RobotBear/Djano-Bug-Tracker
+    $ git clone https://github.com/RobotBear/Django-Bug-Tracker
     
     # Navigate to directory
     $ cd .\Djano-Bug-Tracker  
