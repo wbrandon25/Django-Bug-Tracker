@@ -36,7 +36,7 @@ A project that allows users and developers to track bugs in various projects.
     $ git clone https://github.com/RobotBear/Django-Bug-Tracker
     
     # Navigate to directory
-    $ cd .\Djano-Bug-Tracker  
+    $ cd .\Django-Bug-Tracker  
    
     # Create a virtual environment and activate it 
     $ virtualenv env
