@@ -7,14 +7,10 @@ A project that allows users and developers to track bugs in various projects.
 
 ## Technologies Used 
 
-* [Django](https://www.djangoproject.com/)
-	* The Python framework used to create the backend.
-* [PostgreSQL](https://www.postgresql.org/)
-	* Database used to save all of the website's data. 
-* [Bootstrap 5](https://getbootstrap.com/)
-	* CSS framework used to style the frontend. 
-* [Python](https://www.python.org/)
-	* Backend language 
+* [Django](https://www.djangoproject.com/) - The Python framework used to create the backend.
+* [PostgreSQL](https://www.postgresql.org/) - Database used to save all of the website's data. 
+* [Bootstrap 5](https://getbootstrap.com/) - CSS framework used to style the frontend. 
+* [Python](https://www.python.org/) - Backend language 
 * HTML
 * CSS
 
