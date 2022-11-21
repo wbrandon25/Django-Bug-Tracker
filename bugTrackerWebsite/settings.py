@@ -30,6 +30,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']#'django-bug-tracker-99.herokuapp.com/','127.0.0.1'
 
+#Railway specific
+CSRF_TRUSTED_ORIGINS = ['https://your-domain.com']
 
 # Application definition
 
